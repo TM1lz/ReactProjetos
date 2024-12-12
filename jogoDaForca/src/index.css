@@ -1,3 +1,10 @@
+:root{
+  --1color : #DBD8E3;
+  --2color : #5C5470;
+  --3color : #352F44;
+  --4color : #2A2438;
+}
+
 html , body {
   height: 100%;
 

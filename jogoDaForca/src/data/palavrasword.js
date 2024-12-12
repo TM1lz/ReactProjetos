@@ -1,3 +1,4 @@
+// wordList.js
 export const wordList = {
     carro: [
         "Motor", "Porta", "Capô", "Pneu", "Antena", "Volante", "Farol", "Bateria",
@@ -19,4 +20,5 @@ export const wordList = {
         "Advogado", "Médico", "Professor", "Engenheiro", "Arquiteto", "Dentista", "Cabeleireiro", "Motorista",
         "Cozinheiro", "Designer", "Programador", "Empresário", "Professor", "Mecânico", "Padeiro", "Vendedor", "Enfermeiro"
     ]
-}
+};
+
