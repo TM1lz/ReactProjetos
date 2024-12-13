@@ -28,21 +28,20 @@ function App() {
 
     // Selecionar uma categoria aleatória
     const category = categories[randomIndex];
-
-    // Exibir a categoria selecionada
-    console.log(category);
-
     // Pegar uma palavra aleatória dessa categoria
     const wordList = words[category];
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-
     // Exibir a palavra selecionada
     console.log(randomWord);
+    console.log(category)
+    return {randomWord , category}
   };
 
   const startGame = () => {
     setGameStage(stage[1].name);
-    pickWordAndCategory();
+    const {randomWord , category} =pickWordAndCategory();
+    console.log(randomWord , category , "StartGame" )
+//Create an arrey of latters
   };
 
   return (
