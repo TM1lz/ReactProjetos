@@ -41,6 +41,9 @@ function App() {
     setGameStage(stage[1].name);
     const {randomWord , category} =pickWordAndCategory();
     console.log(randomWord , category , "StartGame" )
+    let wordLetters = randomWord.split('')
+    wordLetters = wordLetters.map((l)=>l.toLowerCase())
+    console.log(wordLetters)
 //Create an arrey of latters
   };
 
