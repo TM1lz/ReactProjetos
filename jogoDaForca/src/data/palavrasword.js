@@ -18,7 +18,7 @@ export const wordList = {
     ],
     trabalhos: [
         "Advogado", "Médico", "Professor", "Engenheiro", "Arquiteto", "Dentista", "Cabeleireiro", "Motorista",
-        "Cozinheiro", "Designer", "Programador", "Empresário", "Professor", "Mecânico", "Padeiro", "Vendedor", "Enfermeiro"
+        "Cozinheiro", "Designer", "Programador", "Empresário", "Mecânico", "Padeiro", "Vendedor", "Enfermeiro"
     ]
 };
 

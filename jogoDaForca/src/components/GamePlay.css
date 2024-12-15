@@ -18,6 +18,7 @@
     justify-content: center;
     background-color: #5C5470 ;
     border-radius: 20px;
+    text-transform: uppercase;
 }
 .letter , .blankSquere{
     font-size: 50px;
@@ -39,7 +40,7 @@
     align-items: center;
     justify-content: center;
 }
-.latterContainer input{
+.inq{
     height: 50px;
     width: 50px;
     font-size: 2em;

@@ -1,7 +1,10 @@
 import "./EndGame.css"
 
-export default function EndGame() {
+export default function EndGame({score , letters}) {
   return (
-    <div>EndGame</div>
+    <div>
+      <div></div>
+
+    </div>
   )
 }
