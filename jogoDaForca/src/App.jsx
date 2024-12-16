@@ -3,7 +3,7 @@ import EndGame from "./components/EndGame";
 import StartScreen from "./components/StartScreen";
 import { wordList } from "./data/palavrasword";
 import "./App.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 const stage = [
   { id: 1, name: "start" },
@@ -22,6 +22,7 @@ function App() {
   const [guesses, setGuesses] = useState(3);  // Max attempts
   const [score, setScore] = useState(0);
 
+  // Função para escolher palavra e categoria
   const pickWordAndCategory = () => {
     const categories = Object.keys(words);
     const randomIndex = Math.floor(Math.random() * categories.length);
@@ -32,6 +33,17 @@ function App() {
     return { randomWord, category };
   };
 
+  // Função para reiniciar o jogo
+  const resetGame = () => {
+    setScore(0);
+    setGuesses(3);
+    setGameStage(stage[0].name);
+    setLetters([]);
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+
+  // Inicia o jogo
   const startGame = () => {
     setGameStage(stage[1].name);
     const { randomWord, category } = pickWordAndCategory();
@@ -41,28 +53,26 @@ function App() {
     setLetters(wordLetters);
   };
 
+  // Função para lidar com a tentativa do jogador
   const handleGuess = (letter) => {
-    // Converte para minúscula antes de comparar
     letter = letter.toLowerCase();
-  
-    // Evita múltiplas tentativas da mesma letra
+
     if (guessedLetters.includes(letter) || wrongLetters.includes(letter)) {
-      return console.log("teste");
+      return console.log("Você já tentou essa letra");
     }
-  
-    // Verificar se a letra está na palavra
+
     if (pickedWord.includes(letter)) {
       setGuessedLetters((prevGuessedLetters) => [...prevGuessedLetters, letter]);
       setScore(score + 10);
     } else {
-      if (guesses == 1 ) {
-        setGameStage(stage[2].name);
-      }else{
-        setGuesses(guesses - 1);
-      }}
-      
+      setWrongLetters((prevWrongLetters) => [...prevWrongLetters, letter]);
+      if (guesses === 1) {
+        setGameStage(stage[2].name); // Finaliza o jogo
+      } else {
+        setGuesses(guesses - 1); // Diminui as tentativas restantes
+      }
+    }
   };
-  
 
   return (
     <div className="App">
@@ -78,7 +88,7 @@ function App() {
           handleGuess={handleGuess}
         />
       )}
-      {gameStage === "end" && <EndGame score={score} letters={letters}/>}
+      {gameStage === "end" && <EndGame resetGame={resetGame} score={score} letters={letters} />}
     </div>
   );
 }

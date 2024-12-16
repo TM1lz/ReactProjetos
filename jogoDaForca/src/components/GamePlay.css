@@ -9,16 +9,20 @@
     color: #6e721cf3;
 }
 .wordContainer{
+    width: auto;
+    height: auto;
     margin: 1rem;
     padding: 1rem;
     border: 20px solid #2A2438;
     display: flex;
-    font-size: 40px;
     align-items: center;
     justify-content: center;
     background-color: #5C5470 ;
     border-radius: 20px;
     text-transform: uppercase;
+    }
+.wordContainer span {
+    font-size: 40px;
 }
 .letter , .blankSquere{
     font-size: 50px;

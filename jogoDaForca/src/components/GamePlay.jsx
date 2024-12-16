@@ -18,11 +18,11 @@ export default function GamePlay({
 
     // Converte a entrada para minúscula antes de passar para handleGuess
     const letter = letterInput.toLowerCase();
-    if (letter) {
+    if (letter && !guessedLetters.includes(letter) && !wrongLetters.includes(letter)) {
       handleGuess(letter);
     }
     setLetterInput(""); // Limpa o input após a tentativa
- console.log(displayWord)
+    console.log(displayWord); // Verifique se o displayWord está correto
   };
 
   // Renderiza a palavra com letras adivinhadas e espaços para as não adivinhadas
@@ -50,7 +50,8 @@ export default function GamePlay({
       <div className="letterContainer">
         <p>Tente adivinhar uma letra:</p>
         <form onSubmit={handleSubmit}>
-          <input className="inq"
+          <input
+            className="inq"
             type="text"
             value={letterInput}
             onChange={(e) => setLetterInput(e.target.value)}
@@ -68,4 +69,5 @@ export default function GamePlay({
     </div>
   );
 }
+
 
