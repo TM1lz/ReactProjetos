@@ -1,0 +1,23 @@
+.navbar{
+    background-color: brown;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttons-navbar button {
+        font-weight: bold;
+        color: white;
+        border-radius: 2rem;
+        cursor: pointer;
+        width: 95.02px;
+        height: 42.66px;
+        border: none;
+        background-color: #3653f8;
+        margin: 5px;
+
+}
+.buttons-navbar button:hover{
+    box-shadow: 0 0 10px #3653f8
+
+}
