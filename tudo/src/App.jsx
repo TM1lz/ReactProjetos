@@ -1,6 +1,8 @@
-import Menu from './components/menu'
+
 import NavBar from './components/Navbar'
 import './App.css'
+
+import List from './components/List'
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
       <NavBar></NavBar>
       <div className='content-app'>
         <h1>Teste</h1>
+        <List></List>
       </div>
     </div>
   )

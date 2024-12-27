@@ -5,8 +5,8 @@ export default function NavBar() {
     <div  className="navbar">
         <h2>ToDoList</h2>
         <div className="buttons-navbar">
-            <button>Teste</button>
-            <button>Teste</button>
+            <button>Lista</button>
+            <button>Pesquisar</button>
             <button>Teste</button>
         </div>
         </div>

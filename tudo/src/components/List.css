@@ -1,0 +1,29 @@
+.li-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.div-lis{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.div-lis h2 {
+    margin: 10px;
+}
+ button {
+    font-weight: bold;
+    color: white;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 95.02px;
+    height: 40.66px;
+    border: none;
+    background-color: #3653f8;
+    margin: 5px;
+
+}
+ button:hover{
+box-shadow: 0 0 10px #3653f8
+
+}
