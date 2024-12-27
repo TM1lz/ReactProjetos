@@ -1,15 +1,29 @@
+.conent-list{
+    padding: 10px;
+    text-align: center;
+}
 .li-list{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 5px 20px;
 }
 .div-lis{
     display: flex;
     align-items: center;
+    background-color: blueviolet;
+    width: 100%;
     justify-content: space-between;
 }
 .div-lis h2 {
-    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+
+.div-lis div{
+    display: flex;
+    align-items: center;
 }
  button {
     font-weight: bold;
@@ -26,4 +40,9 @@
  button:hover{
 box-shadow: 0 0 10px #3653f8
 
+}
+.li-email{
+    background-color: blue;
+    justify-content: start;
+    width: 50%;
 }

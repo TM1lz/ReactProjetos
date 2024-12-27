@@ -9,7 +9,6 @@ function App() {
     <div className='app'>
       <NavBar></NavBar>
       <div className='content-app'>
-        <h1>Teste</h1>
         <List></List>
       </div>
     </div>

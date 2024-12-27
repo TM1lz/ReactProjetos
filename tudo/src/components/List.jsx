@@ -12,15 +12,20 @@ export default function List() {
   }, []); // O array vazio faz a requisição apenas uma vez
 
   return (
-    <div>
+    <div className="conent-list">
       <h1>List On</h1>
       <ul>
         {data.map((user) => (
           <li key={user.id} className="li-list">
             <div className="div-lis">
-              <h2> Name :</h2> {user.name}
-              <h2>Email:</h2>
-              <p>{user.email}</p>
+              <div className="li-name">
+                <h2>Name : </h2>
+                <p>{user.name}</p>
+              </div>
+              <div className="li-email">
+                <h2>Email: </h2>
+                <p>{user.email}</p>
+              </div>
             </div>
 
             <button>Infor</button>
