@@ -1,0 +1,32 @@
+.userinfo{
+    background-color: brown;
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+}
+
+.userinfo input {
+    background-color: #222630;
+    padding: 12px 16px; /* px-4 py-3 */
+    outline: none;
+    width: 100%; /* w-[280px] */
+    height: 50px;
+    color: white;
+    border-radius: 8px; /* rounded-lg */
+    border: 2px solid #2B3040; /* border-2 border-[#2B3040] */
+    transition: border-color 0.1s; /* transition-colors duration-100 */
+    margin: 10px 2px;
+}
+.userinfor-tell{
+    display: flex;
+}
+.userinfor-tell input:nth-child(1){
+    width: 90px;
+}
+.userinfo form{
+    margin: 2rem;
+}
+.userinfo button {
+    position: relative;
+    right: 0; /* Move o botão para o lado direito */
+}
