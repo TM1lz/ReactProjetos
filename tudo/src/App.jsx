@@ -1,20 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Correct import for routing
+import NavBar from './components/Navbar';
+import './App.css';
 
-import NavBar from './components/Navbar'
-import './App.css'
-//Componentns
-import List from './components/List'
-import UserInfo from './components/UserInfo'
+// Componentes
+import List from './components/List';
+import UserInfo from './components/UserInfo';
 
 function App() {
   return (
-    <div className='app'>
-      <NavBar></NavBar>
-      <div className='content-app'>
-        {/* <List></List> */}
-        <UserInfo></UserInfo>
+    <Router>
+      <div className='app'>
+        <NavBar />
+        <div className='content-app'>
+          <Routes>
+            <Route path="/" element={<List />} />
+            <Route path="/user/:id" element={<UserInfo />} />
+          </Routes>
+        </div>
       </div>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
