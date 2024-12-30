@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 3vh;
+    background-color: beige;
 }
 .brand{
     font-size: 1.2em;
@@ -15,14 +16,24 @@
 .link_list {
   display: flex;
 }
-.link_list li{
-    
-    list-style: none;
+.link_list button{
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    background-color: beige;
 }
-.link_list li a {
+
+
+
+.link_list button a {
+    text-decoration: none;
     padding: .4em .6em;
+    border-radius: 5px;
 }
 .active{
     background-color: black;
     color: white;
+    border-radius: 5px;
 }

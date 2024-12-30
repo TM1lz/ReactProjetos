@@ -8,17 +8,26 @@ export default function NavBar() {
             Mine <span>Blog</span>
         </NavLink>
         <ul className={styles.link_list}>
-            <li>
+            <button>
                 <NavLink to="/" className={({isActive})=>(isActive ? styles.active : "")}>
                 Home
                 </NavLink>
-            </li>
-
-            <li>
+            </button>
+            <button>
+                <NavLink to="/login" className={({isActive})=>(isActive ? styles.active : "")}>
+                Login
+                </NavLink>
+            </button>
+            <button>
+                <NavLink to="/register" className={({isActive})=>(isActive ? styles.active : "")}>
+                Register
+                </NavLink>
+            </button>
+            <button>
                 <NavLink to="/About" className={({isActive})=>(isActive ? styles.active : "")}>
                 Sobre
                 </NavLink>
-            </li>
+            </button>
         </ul>
     </nav>
   )
