@@ -6,3 +6,7 @@
 body{
     font-family: "Poppins", serif;
 }
+body a {
+    color: black;
+}
+

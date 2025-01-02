@@ -32,6 +32,9 @@
     padding: .4em .6em;
     border-radius: 5px;
 }
+.link_list a {
+    margin: 30px 0px;
+}
 .active{
     background-color: black;
     color: white;
