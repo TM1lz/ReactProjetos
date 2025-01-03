@@ -1,33 +1,40 @@
 import { useState } from "react";
 import styler from "./Register.module.css";
+import useAuthentication from "../../hooks/userAthentication";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userCPassword, setUserCPassword] = useState("");
-  const [error , setError] = useState("")
+  const { createUser , error: authError, loading } = useAuthentication;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError("")
+    // Limpar erro anterior
+    if (userPassword !== userCPassword) {
+      return alert("As senhas precisam ser iguais");
+    }
+
     const user = {
-      userName,
-      userEmail,
-      userPassword
+      displayName: userName,
+      email: userEmail,
+      password: userPassword,
+    };
+
+    try {
+      console.log(user)
+      await useAuthentication.createUser(user); // Chamar a função de registro do hook
+    } catch (error) {
+      console.log(error);
     }
-    if(userPassword!== userCPassword){
-      setError("As senhas precisam ser iguais")
-      return
-    }
-    console.log(user)
   };
 
   return (
     <div className={styler.register}>
-      <div className={styler.formbox} onSubmit={handleSubmit}>
-        <form className={styler.form}>
+      <div className={styler.formbox}>
+        <form className={styler.form} onSubmit={handleSubmit}>
           <span className={styler.title}>Cadastrar-se</span>
           <span className={styler.subtitle}>
             Crie uma conta gratuita com seu e-mail.
@@ -62,12 +69,15 @@ const Register = () => {
               value={userCPassword}
             />
           </div>
-          {error && <p>{error}</p>}
-          <button>Cadastrar</button>
+          {authError && <p>{authError}</p>} {/* Exibir erro do hook */}
+          {loading && <p>Carregando...</p>} {/* Exibir carregando */}
+          <button type="submit" disabled={loading}>
+            {loading ? "Cadastrando..." : "Cadastrar"}
+          </button>
         </form>
         <div className={styler.formsection}>
           <p>
-            Ja possui uam conta? <a href="/login">Entrar</a>
+            Já possui uma conta? <a href="/login">Entrar</a>
           </p>
         </div>
       </div>
