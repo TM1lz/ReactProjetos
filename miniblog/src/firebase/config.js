@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "miniblog-5aef0",
   storageBucket: "miniblog-5aef0.firebasestorage.app",
   messagingSenderId: "846916056533",
-  appId: "1:846916056533:web:0ec9c9aedac2601c94b95c",
+  appId: "1:846916056533:web:0ec9c9aedac2601c94b95c"
 };
 
 // Initialize Firebase

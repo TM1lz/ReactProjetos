@@ -7,26 +7,19 @@ const useAuthentication = () => {
     const [loading, setLoading] = useState(false);
     const [cancelled, setCancelled] = useState(false);
 
-    function checkIfCancelled() {
-        if (cancelled) {
-            return true;
-        }
-        return false;
-    }
-
     const createUser = async (user) => {
-        if (checkIfCancelled()) return;
-        console.log("teste" , user)
+        console.log("teste", user);
         setLoading(true);
 
         try {
             // Aguardar o retorno da promise do Firebase
-            const { user } = await createUserWithEmailAndPassword(
+            const { user: firebaseUser } = await createUserWithEmailAndPassword(
                 auth,
                 user.email,
                 user.password
             );
-            await updateProfile(user, { displayName: user.displayName });
+            // Atualizando o perfil do usuário no Firebase
+            await updateProfile(firebaseUser, { displayName: user.displayName });
         } catch (error) {
             setError(error.message); // Corrigido para passar a mensagem de erro diretamente
         }

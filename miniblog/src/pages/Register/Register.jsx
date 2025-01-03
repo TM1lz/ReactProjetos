@@ -7,7 +7,7 @@ const Register = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userCPassword, setUserCPassword] = useState("");
-  const { createUser , error: authError, loading } = useAuthentication;
+  const { createUser , error: authError, loading } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,9 +25,9 @@ const Register = () => {
 
     try {
       console.log(user)
-      await useAuthentication.createUser(user); // Chamar a função de registro do hook
+      await createUser(user); // Chamar a função de registro do hook
     } catch (error) {
-      console.log(error);
+      console.log(error);            
     }
   };
 
