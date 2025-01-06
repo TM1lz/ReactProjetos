@@ -8,23 +8,47 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-
+//Hooks
+import { useState, useEffect } from "react";
+import  useAuthentication  from "./hooks/useAuthentication";
+//context
+import { AuthProvider } from "./context/AuthContext";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  const [user, setUser] = useState(undefined);
+  const [auth] = useAuthentication();
+  const loadingUser = user === undefined;
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    // Cleanup function to unsubscribe from auth state change when the component unmounts
+    return () => unsubscribe();
+  }, [auth]);
+
+  if (loadingUser) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="app">
-      <BrowserRouter>
-      <NavBar/>
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/about" element={<About/>}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register/>}></Route>
-          </Routes>
-        </div>
-        <Footer/>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <NavBar />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

@@ -7,30 +7,34 @@ const useAuthentication = () => {
     const [loading, setLoading] = useState(false);
     const [cancelled, setCancelled] = useState(false);
 
+    // Função para criar usuário
     const createUser = async (user) => {
-        console.log("teste", user);
+        if (cancelled) return;  // Impede a execução da função se o componente foi desmontado
         setLoading(true);
+        setError(null); // Limpa erros anteriores
 
         try {
-            // Aguardar o retorno da promise do Firebase
             const { user: firebaseUser } = await createUserWithEmailAndPassword(
                 auth,
                 user.email,
                 user.password
             );
-            // Atualizando o perfil do usuário no Firebase
+
+            // Atualiza o perfil do usuário no Firebase
             await updateProfile(firebaseUser, { displayName: user.displayName });
         } catch (error) {
-            setError(error.message); // Corrigido para passar a mensagem de erro diretamente
+            setError(error.message); // Corrige para passar a mensagem de erro
+        } finally {
+            setLoading(false); // Garantir que a flag de loading seja atualizada
         }
-        setLoading(false);
     };
 
+    // Função de limpeza
     useEffect(() => {
-        return () => setCancelled(true); // Cleanup
+        return () => setCancelled(true); // Marca que o componente foi desmontado
     }, []);
 
-    return { createUser, error, loading }; // Expondo o erro corretamente
+    return { createUser, error, loading };
 };
-
-export default useAuthentication;
+// eslint-disable-next-line no-undef
+de = useAuthentication;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styler from "./Register.module.css";
-import useAuthentication from "../../hooks/userAthentication";
+import  useAuthentication  from "../../hooks/useAuthentication";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
