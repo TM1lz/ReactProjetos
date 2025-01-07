@@ -1,40 +1,62 @@
-import { auth } from "../firebase/config";  // Importando auth corretamente
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { useState, useEffect } from "react";
-
-const useAuthentication = () => {
+// useAuthentication.js
+import {
+    createUserWithEmailAndPassword,
+    updateProfile,
+    getAuth,
+    signInWithEmailAndPassword,
+  } from "firebase/auth";
+  import { useState, useEffect } from "react";
+  import { auth } from "../firebase/config"; // Import the auth instance
+  
+  const useAuthentication = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [cancelled, setCancelled] = useState(false);
-
-    // Função para criar usuário
+    const auth = getAuth(); // Create auth instance here
+  
+    // Function to create a user
     const createUser = async (user) => {
-        if (cancelled) return;  // Impede a execução da função se o componente foi desmontado
-        setLoading(true);
-        setError(null); // Limpa erros anteriores
-
-        try {
-            const { user: firebaseUser } = await createUserWithEmailAndPassword(
-                auth,
-                user.email,
-                user.password
-            );
-
-            // Atualiza o perfil do usuário no Firebase
-            await updateProfile(firebaseUser, { displayName: user.displayName });
-        } catch (error) {
-            setError(error.message); // Corrige para passar a mensagem de erro
-        } finally {
-            setLoading(false); // Garantir que a flag de loading seja atualizada
-        }
+      setLoading(true);
+      setError(null); // Clear previous errors
+  
+      try {
+        const { user: firebaseUser } = await createUserWithEmailAndPassword(
+          auth,
+          user.email,
+          user.password
+        );
+  
+        // Update user profile in Firebase
+        await updateProfile(firebaseUser, { displayName: user.displayName });
+      } catch (error) {
+        setError(error.message); // Pass the error message
+      } finally {
+        setLoading(false); // Ensure loading flag is updated
+      }
     };
-
-    // Função de limpeza
+  
+    // Function to log in the user
+    const loginUser = async (user) => {
+      setLoading(true);
+      try {
+        const auth = getAuth(); // Create auth instance here
+        await signInWithEmailAndPassword(auth, user.email, user.password);
+        // Further handling after successful login (e.g., redirect or user info)
+      } catch (error) {
+        setError(error.message); // Pass the error message
+      } finally {
+        setLoading(false); // Ensure loading flag is updated
+      }
+    };
+  
+    // Cleanup function
     useEffect(() => {
-        return () => setCancelled(true); // Marca que o componente foi desmontado
+      return () => setCancelled(true); // Mark the component as unmounted
     }, []);
-
-    return { createUser, error, loading };
-};
-// eslint-disable-next-line no-undef
-de = useAuthentication;
+  
+    // Return both createUser and loginUser functions
+    return { createUser, loginUser, error, loading };
+  };
+  
+  export default useAuthentication; // Make sure to export the hook correctly
+  

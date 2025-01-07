@@ -8,16 +8,17 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-//Hooks
+// Hooks
 import { useState, useEffect } from "react";
-import  useAuthentication  from "./hooks/useAuthentication";
-//context
+// context
 import { AuthProvider } from "./context/AuthContext";
-import { onAuthStateChanged } from "firebase/auth";
+// firebase
+import { auth } from "./firebase/config"; // Importe corretamente o auth
+
+import { onAuthStateChanged } from "firebase/auth"; // Importe corretamente a função do Firebase
 
 function App() {
   const [user, setUser] = useState(undefined);
-  const [auth] = useAuthentication();
   const loadingUser = user === undefined;
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
 
     // Cleanup function to unsubscribe from auth state change when the component unmounts
     return () => unsubscribe();
-  }, [auth]);
+  }, []); // A dependência do useEffect é apenas a instância auth
 
   if (loadingUser) {
     return <p>Loading...</p>;
