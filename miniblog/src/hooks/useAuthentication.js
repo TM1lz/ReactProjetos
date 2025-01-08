@@ -42,11 +42,14 @@ import {
         const auth = getAuth(); // Create auth instance here
         await signInWithEmailAndPassword(auth, user.email, user.password);
         // Further handling after successful login (e.g., redirect or user info)
+       
       } catch (error) {
         setError(error.message); // Pass the error message
       } finally {
         setLoading(false); // Ensure loading flag is updated
       }
+   
+      
     };
   
     // Cleanup function

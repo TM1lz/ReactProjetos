@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom"
+import useAuthentication from "../hooks/useAuthentication"
+import { useAuthValue } from "../context/AuthContext"
 
 import styles from "./NavBar.module.css"
 export default function NavBar() {
+    const {user} = useAuthentication()
   return (
     <nav className={styles.navbar}>
         <NavLink to="/" className={styles.brand}>
@@ -13,6 +16,8 @@ export default function NavBar() {
                 Home
                 </NavLink>
             </button>
+            {!user && (
+                <>
             <button>
                 <NavLink to="/login" className={({isActive})=>(isActive ? styles.active : "")}>
                 Login
@@ -23,12 +28,16 @@ export default function NavBar() {
                 Register
                 </NavLink>
             </button>
+                </>
+            )}
             <button>
                 <NavLink to="/About" className={({isActive})=>(isActive ? styles.active : "")}>
                 Sobre
                 </NavLink>
             </button>
         </ul>
+
+        {user.name}
     </nav>
   )
 }
