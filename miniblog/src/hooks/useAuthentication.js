@@ -17,7 +17,7 @@ const useAuthentication = () => {
 
   // Função para criar um novo usuário
   const createUser = async (user) => {
-    if (cancelled) return; // Se o componente foi desmontado, não continua a execução
+    if (!cancelled) return; // Se o componente foi desmontado, não continua a execução
     setLoading(true); // Inicia o carregamento (loading)
     setError(null); // Limpa qualquer erro anterior
 
@@ -33,7 +33,7 @@ const useAuthentication = () => {
       await updateProfile(firebaseUser, { displayName: user.displayName });
     } catch (error) {
       // Em caso de erro, define a mensagem de erro no estado
-      setError("Senha e Email invalidos")
+      setError("Email invalido")
       console.log(error); // A mensagem de erro pode ser algo como 'email já em uso'
     } finally {
       // Quando o processo for concluído (sucesso ou falha), o loading é desativado
