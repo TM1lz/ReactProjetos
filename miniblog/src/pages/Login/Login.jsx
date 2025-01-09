@@ -10,17 +10,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("teste click" , userPassword)
 
     // Verificando se os campos estão preenchidos
     if (!userEmail || !userPassword) {
       setErrorMessage("Por favor, preencha todos os campos.");
-      return;
-    }
-
-    // Validando o formato do e-mail
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailPattern.test(userEmail)) {
-      setErrorMessage("Por favor, insira um endereço de e-mail válido.");
       return;
     }
 
@@ -30,7 +24,7 @@ const Login = () => {
       email: userEmail,
       password: userPassword,
     };
-
+console.log(user)
     try {
       await loginUser(user); // Chama a função de login
     } catch (error) {
@@ -71,12 +65,12 @@ const Login = () => {
             />
           </div>
           
-          {/* Exibindo a mensagem de erro, se houver */}
           {errorMessage && <p className={styler.error}>{errorMessage}</p>}
           
-          <button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading} onClick={handleSubmit}>
             {loading ? 'Carregando...' : 'Login'}
           </button>
+          {authError}
         </form>
         <div className={styler.formsection}>
           <p>

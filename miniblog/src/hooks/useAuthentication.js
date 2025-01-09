@@ -33,7 +33,8 @@ const useAuthentication = () => {
       await updateProfile(firebaseUser, { displayName: user.displayName });
     } catch (error) {
       // Em caso de erro, define a mensagem de erro no estado
-      setError(error.message || "Ocorreu um erro"); // A mensagem de erro pode ser algo como 'email já em uso'
+      setError("Senha e Email invalidos")
+      console.log(error); // A mensagem de erro pode ser algo como 'email já em uso'
     } finally {
       // Quando o processo for concluído (sucesso ou falha), o loading é desativado
       setLoading(false);
@@ -42,22 +43,21 @@ const useAuthentication = () => {
 
   // Função para fazer login do usuário
   const loginUser = async (user) => {
-    if (cancelled) return; // Verifica se o componente foi desmontado antes de continuar
-    setLoading(true); // Inicia o carregamento
-    setError(null); // Limpa o erro anterior
-
+    setLoading(true); 
+    setError(null);
+  
     try {
-      // Tentando fazer o login com o email e a senha fornecidos
+      console.log('Tentando login com:', user.email, user.password); // Verifique os dados aqui
       await signInWithEmailAndPassword(auth, user.email, user.password);
-      // Aqui você pode adicionar lógica extra, como redirecionar o usuário após o login bem-sucedido
-    } catch (error) {
-      // Em caso de erro, exibe a mensagem de erro
-      setError(error.message || "Ocorreu um erro ao fazer login");
+      console.log("login feito com sucesso");
+    } catch (err) {
+      setError( "Senha ou Email invalidos");
+      console.log(err)
     } finally {
-      // O loading é desativado após o processo (sucesso ou falha)
       setLoading(false);
     }
   };
+  
 
   // Hook de efeito para limpar o estado 'cancelled' quando o componente for desmontado
   useEffect(() => {
