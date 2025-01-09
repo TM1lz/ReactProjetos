@@ -5,24 +5,26 @@ import useAuthentication from "../../hooks/useAuthentication";
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // State for error message
-  const { loginUser, error: authError, loading } = useAuthentication(); // Destructure loginUser here
+  const [errorMessage, setErrorMessage] = useState(""); // State para mensagem de erro
+  const { loginUser, error: authError, loading } = useAuthentication(); // Obtemos a função de login e o erro de autenticação
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Verificando se os campos estão preenchidos
     if (!userEmail || !userPassword) {
-      setErrorMessage("Please fill in all fields");
+      setErrorMessage("Por favor, preencha todos os campos.");
       return;
     }
 
+    // Validando o formato do e-mail
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(userEmail)) {
-      setErrorMessage("Please enter a valid email address");
+      setErrorMessage("Por favor, insira um endereço de e-mail válido.");
       return;
     }
 
-    setErrorMessage(""); // Clear any previous error messages
+    setErrorMessage(""); // Limpando a mensagem de erro anterior
 
     const user = {
       email: userEmail,
@@ -30,10 +32,17 @@ const Login = () => {
     };
 
     try {
-      await loginUser(user); // Call the login function
+      await loginUser(user); // Chama a função de login
     } catch (error) {
-      setErrorMessage("Failed to login. Please check your credentials.");
-      console.log(error); // Optionally log the error
+      console.log(error); // Para depuração, você pode verificar o erro completo
+      // Checando o tipo de erro e exibindo mensagens específicas
+      if (error.message.includes("auth/wrong-password")) {
+        setErrorMessage("Senha incorreta. Tente novamente.");
+      } else if (error.message.includes("auth/user-not-found")) {
+        setErrorMessage("Usuário não encontrado. Verifique seu e-mail.");
+      } else {
+        setErrorMessage("Falha ao fazer login. Verifique suas credenciais.");
+      }
     }
   };
 
@@ -62,7 +71,7 @@ const Login = () => {
             />
           </div>
           
-          {/* Display the error message */}
+          {/* Exibindo a mensagem de erro, se houver */}
           {errorMessage && <p className={styler.error}>{errorMessage}</p>}
           
           <button type="submit" disabled={loading}>

@@ -88,3 +88,8 @@
 .form button:hover {
   background-color: #005ce6;
 }
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
