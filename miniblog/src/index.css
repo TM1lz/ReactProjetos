@@ -1,12 +1,14 @@
 *{
-    margin: 0px;
-    padding: 0px;
     box-sizing: border-box;
 }
-body{
+body , html{
     font-family: "Poppins", serif;
+    background-color: #b1b1b1;
+    height: 100%;
+    margin: 0;
+
 }
-body a {
-    color: black;
-}
+
+
+
 
