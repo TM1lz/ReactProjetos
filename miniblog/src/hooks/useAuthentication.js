@@ -3,6 +3,7 @@ import {
   updateProfile,
   getAuth,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth"; // Importando funções do Firebase para autenticação
 import { useState, useEffect } from "react"; // Importando hooks do React
 import { auth } from "../firebase/config"; // Importando a instância de auth configurada no Firebase
@@ -57,6 +58,10 @@ const useAuthentication = () => {
       setLoading(false);
     }
   };
+  const logout = ()=>{
+    
+    signOut(auth)
+  }
   
 
   // Hook de efeito para limpar o estado 'cancelled' quando o componente for desmontado
@@ -65,7 +70,7 @@ const useAuthentication = () => {
   }, []);
 
   // Retorna as funções de autenticação, o estado de erro e de loading
-  return { createUser, loginUser, error, loading };
+  return { createUser, loginUser, error, loading , logout };
 };
 
 export default useAuthentication; // Exporta o hook para ser utilizado em outros componentes

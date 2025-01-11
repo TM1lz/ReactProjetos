@@ -5,25 +5,40 @@ import { useState, useEffect } from "react";
 import useAuthentication from "../hooks/useAuthentication";
 
 export default function NavBar() {
-  // Acessando o 'user' diretamente do contexto com 'useAuthValue'
-  const { user } = useAuthValue(); // Aqui usamos o 'useAuthValue' para acessar o contexto de autenticação
-  const [userName, setUserName] = useState("");
+  const { user } = useAuthValue();
+  const { logout } = useAuthentication();
 
-  // UseEffect para atualizar o nome do usuário assim que o 'user' for alterado
+  const [userName, setUserName] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar o menu hamburger
+
   useEffect(() => {
     if (user) {
       setUserName(user.displayName);
+    } else {
+      setUserName(""); // Limpa o nome do usuário quando ele sai
     }
-  }, []); // O efeito será disparado sempre que o 'user' mudar
+  }, [user]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); // Alterna o estado do menu
+  };
 
   return (
     <nav className={styles.navbar}>
-      {/* Link para a página inicial */}
+      {/* Logo */}
       <NavLink to="/" className={styles.brand}>
         Mine <span>Blog</span>
       </NavLink>
-      <ul className={styles.link_list}>
-        {/* Link para a página Home */}
+
+      {/* Ícone do Menu Hamburger */}
+      <div className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`} onClick={toggleMenu}>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+      </div>
+
+      {/* Menu de Links */}
+      <ul className={`${styles.link_list} ${menuOpen ? styles.show : ""}`}>
         <li>
           <NavLink
             to="/"
@@ -32,7 +47,6 @@ export default function NavBar() {
             Home
           </NavLink>
         </li>
-        {/* Se o usuário não estiver autenticado, mostrar links de Login e Register */}
         {!user && (
           <>
             <li>
@@ -53,7 +67,18 @@ export default function NavBar() {
             </li>
           </>
         )}
-        {/* Link para a página "Sobre" */}
+        {user && (
+          <>
+            <li>
+              <NavLink
+                to="/create-post"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Novo Post
+              </NavLink>
+            </li>
+          </>
+        )}
         <li>
           <NavLink
             to="/about"
@@ -62,11 +87,15 @@ export default function NavBar() {
             Sobre
           </NavLink>
         </li>
+        {user && (
+          <li>
+            <button onClick={logout}>Sair</button>
+          </li>
+        )}
       </ul>
 
-      {/* Exibe o nome do usuário, caso esteja logado */}
-      {user && <p>Bem-vindo{`, ${userName}`}</p>}
+      {/* Saudação com o nome do usuário */}
+      {user && <p className={styles.welcome}>Bem-vindo, {userName}</p>}
     </nav>
   );
 }
-

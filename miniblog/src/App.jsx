@@ -20,6 +20,7 @@ import { AuthProvider } from "./context/AuthContext";
 // Firebase
 import { auth } from "./firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
+import CreatePost from "./pages/CreatePost/CreatePost";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -53,6 +54,10 @@ function App() {
               <Route
                 path="/register"
                 element={user ? <Navigate to="/" /> : <Register />}
+              />
+              <Route
+                path="/create-post"
+                element={!user ? <Navigate to="/" /> : <CreatePost />}
               />
             </Routes>
           </div>
