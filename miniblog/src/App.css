@@ -1,21 +1,41 @@
-
+/* Alinha a aplicação inteira */
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garantir que a aplicação ocupe pelo menos a altura da tela */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: flex-start; /* Garante que os itens comecem no topo */
+  min-height: 100vh; /* Garante que ocupe a altura total da tela */
 }
 
+/* Container principal que envolve as rotas */
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1; /* Faz com que a área de conteúdo ocupe o espaço restante */
+  flex-direction: column; /* Alinha os itens no sentido da coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: flex-start; /* Deixa os itens no topo */
+  width: 100%;
+  max-width: 1200px; /* Limita a largura para que não fique muito esticado */
+  padding: 20px;
+  box-sizing: border-box;
+  flex-grow: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+  display: flex; /* Adicionando display flex para que o conteúdo seja centralizado também verticalmente */
+  flex-direction: column; /* Garante que os itens dentro da container fiquem alinhados em coluna */
+  justify-content: center; /* Centraliza os itens verticalmente */
 }
 
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-  margin-top: auto; /* Garante que o footer fique no final da página */
+/* Adiciona espaçamento entre as seções da página */
+.container > * {
+  margin-bottom: 20px;
+}
+
+/* Garantir que o footer esteja sempre no fundo */
+footer {
+  margin-top: auto; /* Empurra o footer para o final */
+}
+
+/* Ajuste para quando a tela for pequena */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Menos padding em telas pequenas */
+  }
 }

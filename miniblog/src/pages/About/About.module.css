@@ -1,17 +1,12 @@
-/* Resetando margens e paddings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Wrapper para a seção "Sobre" */
 .aboutWrapper {
-  padding: 40px 0;
-  min-height: 100vh; /* Garante que o conteúdo ocupe pelo menos 100% da altura da tela */
+  padding: 60px 20px; /* Mais espaço superior e inferior */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin: 30px auto;
+  background-color: #f9f9f9; /* Cor de fundo suave */
 }
 
 /* Container principal */
@@ -19,12 +14,12 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px;
-  background-color: #fff; /* Cor do fundo do conteúdo */
+  background-color: #fff;
   color: #444;
-  font-family: 'Arial', sans-serif;
-  border-radius: 8px; /* Bordas arredondadas para um visual mais suave */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
-  margin-bottom: 40px; /* Espaço extra abaixo do conteúdo */
+  font-family: 'Roboto', sans-serif; /* Fonte mais moderna */
+  border-radius: 12px; /* Bordas arredondadas mais suaves */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+  margin-bottom: 60px;
 }
 
 /* Título principal */
@@ -34,31 +29,34 @@
   text-align: center;
   margin-bottom: 20px;
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Parágrafo de introdução */
 .aboutContent {
   font-size: 1.2em;
-  line-height: 1.6;
+  line-height: 1.8;
   text-align: center;
   color: #555;
   margin-bottom: 40px;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Títulos das seções */
 .sectionTitle {
-  font-size: 2em;
+  font-size: 2.2em;
   color: #444;
   margin-bottom: 15px;
-  border-bottom: 2px solid #ff6600;
+  border-bottom: 3px solid #ff6600;
   padding-bottom: 10px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 /* Conteúdo das seções */
 .sectionContent {
   font-size: 1.1em;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #666;
   margin-bottom: 30px;
   text-align: justify;
@@ -68,20 +66,23 @@
 .valuesList {
   list-style-type: none;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .valuesList li {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding-left: 20px;
   position: relative;
+  font-family: 'Arial', sans-serif;
 }
 
 .valuesList li:before {
   content: "✔";
   left: 0;
   color: #ff6600;
+  font-weight: bold;
+  position: absolute;
 }
 
 /* Seção de autores */
@@ -89,7 +90,7 @@
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  margin-top: 20px;
+  margin-top: 30px;
   flex-wrap: wrap; /* Ajusta o layout quando há pouco espaço */
 }
 
@@ -97,16 +98,22 @@
   text-align: center;
   background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 30%;
-  min-width: 250px; /* Evita que as caixas fiquem pequenas demais em telas pequenas */
-  margin-bottom: 20px; /* Adiciona um pouco de espaço entre os itens */
+  min-width: 250px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out; /* Animação de hover */
+}
+
+.authorItem:hover {
+  transform: translateY(-5px); /* Efeito de elevação */
 }
 
 .authorItem h3 {
-  font-size: 1.4em;
+  font-size: 1.5em;
   color: #333;
+  font-weight: bold;
 }
 
 .authorItem p {
@@ -116,7 +123,7 @@
 
 /* Seções separadas para cada uma delas */
 .missionSection, .visionSection, .valuesSection, .authorsSection {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 /* Responsividade */
@@ -143,6 +150,7 @@
 
   .authorItem {
     width: 100%;
+    margin-bottom: 25px;
   }
 
   .valuesList li {

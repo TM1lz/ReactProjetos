@@ -68,7 +68,8 @@ export default function CreatePost() {
       setBody("");
       setTags([]);
 
-     
+      // Navegar para outra página após o post ser publicado
+      navigate('/posts');  // Redireciona para a página de posts ou página inicial
     }
   }, [response, success, navigate]); // Monitorando 'response' e 'success'
 
@@ -112,6 +113,13 @@ export default function CreatePost() {
           />
         </div>
 
+        {/* Exibindo um preview da imagem */}
+        {image && (
+          <div className={styler.imagePreview}>
+            <img src={image} alt="Imagem do Post" className={styler.previewImage} />
+          </div>
+        )}
+
         <div className={styler.inputContainer}>
           <label htmlFor="body" className={styler.label}>
             Corpo do Post
@@ -145,7 +153,7 @@ export default function CreatePost() {
           className={styler.submitButton} 
           disabled={response.loading} // Desabilitar quando estiver carregando
         >
-          {response.loading ? "Pulicado!" : "Publicar"} {/* Texto ou carregamento */}
+          {response.loading ? "Publicando..." : "Publicar"} {/* Texto ou carregamento */}
         </button>
       </form>
     </div>

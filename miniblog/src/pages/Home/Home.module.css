@@ -1,0 +1,99 @@
+/* Container geral para posts */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px; /* Bordas arredondadas para um design mais suave */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do container */
+  }
+  
+  /* Título principal */
+  .title {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px; /* Aumenta o espaçamento entre o título e os posts */
+    font-family: 'Arial', sans-serif; /* Uma fonte mais moderna */
+  }
+  
+  /* Estilos para a mensagem quando não há posts */
+  .noPosts {
+    text-align: center;
+    padding: 50px 20px; /* Mais espaçamento para deixar a área mais arejada */
+    background-color: #f1f1f1; /* Cor de fundo mais suave */
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    color: #777;
+    font-size: 1.4rem; /* Aumenta o tamanho da fonte para mais legibilidade */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Aumenta o espaçamento entre o ícone e o texto */
+  }
+  
+  .noPostsIcon {
+    width: 100px;
+    height: 100px;
+    color: #888; /* Cor mais suave e moderna */
+    margin-bottom: 20px; /* Adiciona espaçamento entre o ícone e o texto */
+  }
+  
+  .noPosts p {
+    font-size: 1.4rem;
+    color: #777; /* Cor mais suave para o texto */
+    font-weight: 500; /* Torna o texto um pouco mais forte */
+  }
+  
+  /* Estilo de erro (quando ocorre algum erro na requisição dos posts) */
+  .error {
+    color: #fff;
+    background-color: #e74c3c; /* Vermelho mais forte e moderno */
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px; /* Bordas arredondadas para o erro */
+    font-size: 1.2rem;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+    font-weight: 500; /* Tornar o texto mais forte */
+  }
+  
+  /* Estilo de carregamento */
+  .loading {
+    text-align: center;
+    font-size: 1.8rem; /* Aumenta o tamanho da fonte para dar mais destaque */
+    color: #2c3e50; /* Cor mais escura e agradável para o carregamento */
+    margin-top: 50px;
+    font-weight: 500; /* Torna o texto mais forte */
+  }
+  
+  /* Para garantir boa responsividade */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px; /* Menos padding em telas pequenas */
+    }
+  
+    .title {
+      font-size: 2rem; /* Reduz o tamanho do título em telas menores */
+      margin-bottom: 20px;
+    }
+  
+    .noPosts p {
+      font-size: 1.1rem; /* Reduz o tamanho da fonte para dispositivos menores */
+    }
+  
+    .noPostsIcon {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .error {
+      font-size: 1rem; /* Reduz o tamanho da fonte para o erro */
+      padding: 10px; /* Menos padding */
+    }
+  
+    .loading {
+      font-size: 1.5rem; /* Ajusta o tamanho da fonte para carregamento */
+    }
+  }
+  

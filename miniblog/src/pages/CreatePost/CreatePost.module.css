@@ -1,67 +1,100 @@
+/* Container principal do formulário */
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px; /* Maior espaçamento interno para mais conforto visual */
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Bordas mais arredondadas para suavizar o visual */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra mais forte para destacar o formulário */
+  margin-top: 50px; /* Adiciona um espaçamento superior maior */
 }
 
+/* Título do formulário */
 .title {
   color: #ff6600;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px; /* Maior espaçamento inferior */
+  font-family: 'Roboto', sans-serif; /* Fonte mais moderna */
 }
 
+/* Descrição abaixo do título */
 .description {
   text-align: center;
   color: #444;
-  margin-bottom: 20px;
-  font-size: 1rem;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  font-weight: 400; /* Um peso de fonte mais leve */
+  font-family: 'Arial', sans-serif; /* Fonte diferente para a descrição */
 }
 
+/* Formulário em si */
 .form {
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Espaçamento maior entre os campos */
 }
 
+/* Container de cada input */
 .inputContainer {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+/* Rótulo dos campos */
 .label {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 5px;
   font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Garantir consistência */
 }
 
+/* Estilo dos inputs e textarea */
 .input,
 .textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Mais espaçamento para inputs */
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px; /* Bordas mais arredondadas */
   color: #333;
+  background-color: #f9f9f9; /* Fundo levemente cinza para os campos */
+  transition: border-color 0.3s ease; /* Animação de transição para quando o campo for focado */
 }
 
+/* Foco nos inputs (ao clicar no campo) */
+.input:focus,
+.textarea:focus {
+  border-color: #ff6600; /* Cor de destaque quando o campo está em foco */
+  outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilo do textarea (para o corpo do post) */
 .textarea {
-  height: 200px;
+  height: 250px; /* Ajuste na altura do campo de texto */
+  resize: vertical; /* Permite que o usuário redimensione o campo verticalmente */
+  background-color: #f9f9f9;
 }
 
+/* Estilo do botão de submit */
 .submitButton {
-  padding: 10px;
+  padding: 12px;
   background-color: #ff6600;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animação suave ao passar o mouse */
 }
 
+/* Efeito de hover no botão */
 .submitButton:hover {
   background-color: #e65c00;
+  transform: scale(1.05); /* Leve aumento no tamanho do botão */
 }
 
 /* Mensagens de erro e sucesso */
@@ -69,20 +102,71 @@
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-size: 1rem;
+  padding: 15px;
+  margin-bottom: 25px; /* Maior espaçamento para a mensagem de erro */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 1.1rem;
   text-align: center;
+  font-weight: 500;
 }
 
 .success {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-size: 1rem;
+  padding: 15px;
+  margin-bottom: 25px; /* Maior espaçamento para a mensagem de sucesso */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 1.1rem;
   text-align: center;
+  font-weight: 500;
+}
+
+/* Preview da imagem do post */
+.imagePreview {
+  text-align: center;
+  margin-top: 30px; /* Espaçamento maior entre a imagem e os campos */
+  max-width: 100%;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 400px; /* Tamanho máximo ajustado */
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px; /* Borda arredondada para a imagem */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar a imagem */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px; /* Menos padding em telas pequenas */
+  }
+
+  .title {
+    font-size: 1.8rem; /* Menor tamanho de título em dispositivos pequenos */
+  }
+
+  .description {
+    font-size: 1rem; /* Ajuste na fonte da descrição */
+  }
+
+  .input,
+  .textarea {
+    padding: 10px; /* Ajuste no padding para pequenos dispositivos */
+  }
+
+  .submitButton {
+    font-size: 1rem; /* Menor tamanho de fonte no botão */
+    padding: 10px; /* Ajuste no padding */
+  }
+
+  .imagePreview {
+    margin-top: 20px; /* Menor espaçamento para a prévia da imagem */
+  }
+
+  .previewImage {
+    max-height: 300px; /* Ajusta o tamanho da imagem em dispositivos móveis */
+  }
 }
