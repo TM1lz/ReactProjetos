@@ -1,14 +1,18 @@
 /* Estilos principais para a barra de navegação */
 .navbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Espaço entre os itens */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
   background-color: #444;
   padding: 10px 20px;
   color: white;
-  font-family: 'Arial', sans-serif;
-  position: relative;
   z-index: 10;
+  position: fixed; /* Fixa a barra no topo da página */
+  width: 100%; /* Garante que a barra ocupe toda a largura */
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra leve para a navbar */
+  z-index: 1000; /* Garante que a navbar fique acima de outros elementos */
 }
 
 /* Estilos do logo */
@@ -22,7 +26,6 @@
 .brand span {
   color: white;
 }
-
 /* Estilos do menu hambúrguer */
 .hamburger {
   display: none; /* Inicialmente oculto */
@@ -42,9 +45,6 @@
   transition: background-color 0.3s ease;
 }
 
-.hamburger.open .bar {
-  background-color: #ff6600; /* Altera a cor das barras quando aberto */
-}
 
 /* Lista de links */
 .link_list {
@@ -52,55 +52,57 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center; /* Alinha os itens ao centro verticalmente */
+  flex-grow: 1; /* Garante que a lista de links ocupe todo o espaço disponível */
+  justify-content: flex-end; /* Garante que os links sejam alinhados à direita */
 }
 
 .link_list li {
   margin: 0 15px;
 }
 
+/* Estilo dos links (incluindo o botão "Sair") */
 .link_list li a {
   text-decoration: none;
   color: white;
   font-size: 18px;
   font-weight: 500;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
-
-/* Estilo do link ativo */
+.link_list li a.logoutBtn{
+  color: rgba(241, 67, 54, 0.5);
+  transition: color 0.3s ease;
+  font-size: 18px;
+  font-weight: 500;
+}
+.link_list li a.logoutBtn:hover{
+  color: rgba(245, 31, 16, 0.5);
+}
 .link_list li a.active {
   color: #ff6600; /* Destaque para o link ativo */
 }
 
-/* Estilo do hover nos links */
+/* Estilo do hover nos links (incluindo o botão "Sair") */
 .link_list li a:hover {
   color: #ff6600;
 }
 
 .link_list li button {
-  background: none;
-  border: none;
-  color: #d32f2f; /* Vermelho mais suave e moderno */
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-  padding: 8px 16px;
+  color: rgba(241, 67, 54, 0.5);
   border-radius: 4px; /* Adicionando bordas arredondadas */
 }
 
-/* Efeito de hover */
+/* Efeito de hover no botão */
 .link_list li button:hover {
-  color: white; /* Muda a cor do texto para branco no hover */
-  background-color: #f44336; /* Vermelho mais forte para o hover */
-  transform: scale(1.05); /* Leve aumento de tamanho para o efeito de hover */
+  color: white; /* Muda a cor do texto para branco no hover */ /* Usando a cor padrão para o hover */ 
+  background-color: rgba(241, 67, 54, 0.5);
+
 }
 
 /* Efeito ao clicar (focus) */
-.link_list li button:focus {
-  outline: none;
-  box-shadow: 0 0 5px 2px rgba(241, 67, 54, 0.5); /* Adicionando uma sombra suave ao focar no botão */
-}
-
-
 /* Saudação do usuário */
 .welcome {
   font-size: 16px;
@@ -135,12 +137,16 @@
   }
 
   .link_list li {
-    margin: 10px 0;
+    margin: 10px 50px;
     text-align: center;
+    width: 100dvh;
   }
 
   .link_list li a {
     color: white;
+  }
+  .welcome{
+    display: none;
   }
 }
 
@@ -153,4 +159,5 @@
   .hamburger {
     display: none; /* Esconde o hambúrguer em telas grandes */
   }
+
 }

@@ -1,6 +1,4 @@
 
-
-
 .app {
   display: flex;
   flex-direction: column;
@@ -8,6 +6,9 @@
 }
 
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1; /* Faz com que a área de conteúdo ocupe o espaço restante */
 }
 
