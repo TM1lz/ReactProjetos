@@ -21,6 +21,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { auth } from "./firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import CreatePost from "./pages/CreatePost/CreatePost";
+import Post from "./pages/Post/Post";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -45,6 +46,7 @@ function App() {
           <NavBar />
           <div className="container">
             <Routes>
+              <Route path="/post/:id" element = {<Post/>}></Route>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route

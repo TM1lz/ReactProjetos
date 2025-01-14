@@ -26,6 +26,7 @@
 /* Adiciona espaçamento entre as seções da página */
 .container > * {
   margin-bottom: 20px;
+  padding-top: 60px; 
 }
 
 /* Garantir que o footer esteja sempre no fundo */

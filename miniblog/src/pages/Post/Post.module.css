@@ -1,0 +1,58 @@
+/* Estilo para o contêiner do post */
+.post-item {
+    width: 100%;  /* Faz com que o contêiner ocupe toda a largura disponível */
+    max-width: 1500px;  /* Aumenta a largura máxima para 1500px */
+    margin: 0 auto;     /* Centraliza o conteúdo horizontalmente */
+    padding: 30px;      /* Aumenta o espaçamento interno */
+    background-color: white;
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Aumenta a sombra para dar mais destaque */
+    margin-top: 80px;   /* Espaço acima (ajustado para a altura da navbar) */
+    margin-bottom: 20px;/* Espaço abaixo */
+}
+
+/* Estilo para a imagem do post */
+.post-image {
+    width: 100%;  /* A imagem ocupa toda a largura do contêiner */
+    max-height: 500px; /* Limita a altura da imagem para 500px */
+    object-fit: cover; /* Faz com que a imagem cubra a área sem distorcer */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para a imagem */
+    margin-bottom: 20px; /* Espaçamento abaixo da imagem */
+}
+
+/* Título do post */
+.post-title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Conteúdo do post */
+.post-content {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Data de criação do post */
+.post-date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Link para "Ler mais" */
+.read-more-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo do link quando passar o mouse */
+.read-more-link:hover {
+    background-color: #e65c00;
+}
