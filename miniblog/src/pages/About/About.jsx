@@ -37,10 +37,13 @@ export default function About() {
         <section className={styler.authorsSection}>
           <h2 className={styler.sectionTitle}>Sobre o Autor</h2>
           <div className={styler.authorsList}>
-            <div className={styler.authorItem}>
-              <h3>Alisson Pereira</h3>
-              <p>Desenvolvedor Full-stack</p>
-            </div>
+            {/* A tag <a> agora tem o atributo target="_blank" */}
+            <a href="https://github.com/TM1lz" target="_blank" rel="noopener noreferrer">
+              <div className={styler.authorItem}>
+                <h3>Alisson Pereira</h3>
+                <p>Desenvolvedor Full-stack</p>
+              </div>
+            </a>
           </div>
         </section>
       </div>

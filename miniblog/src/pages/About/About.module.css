@@ -121,6 +121,12 @@
   color: #777;
 }
 
+/* Removendo estilo de link para a tag <a> */
+.authorsList a {
+  text-decoration: none; /* Remove o sublinhado do link */
+  color: inherit; /* Faz o link herdar a cor do texto, sem alterar sua cor */
+}
+
 /* Seções separadas para cada uma delas */
 .missionSection, .visionSection, .valuesSection, .authorsSection {
   margin-bottom: 50px;

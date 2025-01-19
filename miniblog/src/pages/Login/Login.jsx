@@ -10,8 +10,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("teste click" , userPassword)
-
     // Verificando se os campos estão preenchidos
     if (!userEmail || !userPassword) {
       setErrorMessage("Por favor, preencha todos os campos.");
@@ -24,7 +22,6 @@ const Login = () => {
       email: userEmail,
       password: userPassword,
     };
-console.log(user)
     try {
       await loginUser(user); // Chama a função de login
     } catch (error) {

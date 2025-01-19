@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
         <h3>Escreva sobre oque voce tem interesse</h3>
-        <p>Mini Blog &copy; 2024</p>
+        <p>Mine Blog &copy; 2024</p>
     </footer>
   )
 }
