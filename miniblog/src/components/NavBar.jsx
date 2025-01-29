@@ -1,43 +1,50 @@
-import { NavLink } from "react-router-dom";
-import { useAuthValue } from "../context/AuthContext"; // Use o contexto de autenticação
-import styles from "./NavBar.module.css";
-import { useState, useEffect } from "react";
-import useAuthentication from "../hooks/useAuthentication";
+// Importações necessárias para a navegação e contexto de autenticação
+import { NavLink } from "react-router-dom"; 
+import { useAuthValue } from "../context/AuthContext"; // Usando o contexto de autenticação
+import styles from "./NavBar.module.css"; // Importando estilos para o componente
+import { useState, useEffect } from "react"; // Hooks do React
+import useAuthentication from "../hooks/useAuthentication"; // Hook personalizado de autenticação
 
 export default function NavBar() {
+  // Pegando o usuário autenticado do contexto
   const { user } = useAuthValue();
+  // Pegando a função de logout do hook de autenticação
   const { logout } = useAuthentication();
 
+  // Estado para armazenar o nome do usuário
   const [userName, setUserName] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar o menu hamburger
+  // Estado para controlar o menu hambúrguer (aberto/fechado)
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  // Efeito que atualiza o nome do usuário quando o estado 'user' mudar
   useEffect(() => {
     if (user) {
-      setUserName(user.displayName);
+      setUserName(user.displayName); // Define o nome do usuário se ele estiver logado
     } else {
-      setUserName(""); // Limpa o nome do usuário quando ele sai
+      setUserName(""); // Limpa o nome quando o usuário sair
     }
   }, [user]);
 
+  // Função para alternar o estado do menu hambúrguer
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Alterna o estado do menu
+    setMenuOpen(!menuOpen); // Alterna o estado de 'menuOpen'
   };
 
   return (
     <nav className={styles.navbar}>
-      {/* Logo */}
+      {/* Logo do blog */}
       <NavLink to="/" className={styles.brand}>
         Mine <span>Blog</span>
       </NavLink>
 
-      {/* Ícone do Menu Hamburger */}
+      {/* Ícone do menu hambúrguer - será exibido em telas pequenas */}
       <div className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`} onClick={toggleMenu}>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
       </div>
 
-      {/* Menu de Links */}
+      {/* Menu de links de navegação */}
       <ul className={`${styles.link_list} ${menuOpen ? styles.show : ""}`}>
         <li>
           <NavLink
@@ -47,6 +54,7 @@ export default function NavBar() {
             Home
           </NavLink>
         </li>
+        {/* Se o usuário não estiver autenticado, exibe os links de login e registro */}
         {!user && (
           <>
             <li>
@@ -67,6 +75,7 @@ export default function NavBar() {
             </li>
           </>
         )}
+        {/* Se o usuário estiver autenticado, exibe o link para criar um novo post */}
         {user && (
           <>
             <li>
@@ -79,6 +88,7 @@ export default function NavBar() {
             </li>
           </>
         )}
+        {/* Link para a página "Sobre", disponível para todos */}
         <li>
           <NavLink
             to="/about"
@@ -87,6 +97,7 @@ export default function NavBar() {
             Sobre
           </NavLink>
         </li>
+        {/* Se o usuário estiver autenticado, exibe o botão de logout */}
         {user && (
           <li>
             <a onClick={logout} className={styles.logoutBtn}>
@@ -96,7 +107,7 @@ export default function NavBar() {
         )}
       </ul>
 
-      {/* Saudação com o nome do usuário */}
+      {/* Saudação com o nome do usuário (só aparece se estiver logado) */}
       {user && <p className={styles.welcome}>Bem-vindo, {userName}</p>}
     </nav>
   );
